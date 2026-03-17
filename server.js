@@ -3,6 +3,7 @@ dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 const express = require('express');
 const api = require('./api');
+var path = require("path");  //AGREGADO DESPUES DEL COMMIT CRUD
 const port = process.env.PORT || 3000;
 const app = express();
 
@@ -14,7 +15,7 @@ app.listen(port, function () {
 });
 
 app.get('/', function (req, res) {
-    res.send("hello world");
+    res.sendFile(path.join(__dirname, 'index.html')) // SE MODIFICA ESTA LINEA
 });
 
 app.use('/api', api);
